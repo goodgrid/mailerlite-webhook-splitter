@@ -16,6 +16,6 @@ Two environment variables are expected:
 - MAILERLITE_SECRETKEY => MailerLite API key used as the HMAC signature secret key
 
 Notes
-- The MailerLite signature is not passed along with the split webhook.
+- The split webhooks are not signed
 
 
