@@ -13,6 +13,7 @@ app.post("/", async (req, res) => {
 
     const signature = req.headers["x-mailerlite-signature"]
     const rawBody = req.body
+    const querystrng = req.query
     
     let parsedBody
     try {
@@ -29,7 +30,7 @@ app.post("/", async (req, res) => {
     
         for (const event of events) {
             try {
-                const response = await axios.post(config.webhookEndpoint, event)
+                const response = await axios.post(config.webhookEndpoint, {events: [event]}, {params: querystrng})
             } catch(error) {
                 log("Error sending split event: (nextline)")
                 log(error.message)
